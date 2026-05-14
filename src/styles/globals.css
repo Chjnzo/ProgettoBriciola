@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 253 250 246;   /* cream */
+    --foreground: 42 30 20;      /* ink */
+    --radius: 0.125rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-lora text-[18px] leading-[1.75];
+  }
+
+  @media (max-width: 768px) {
+    body {
+      @apply text-[16px];
+    }
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    @apply font-serif font-normal leading-[1.1];
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    @apply font-serif font-normal leading-[1.2];
+  }
+
+  h3 {
+    @apply font-serif text-2xl font-normal leading-snug;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-lora {
+    font-family: 'Lora', Georgia, serif;
+  }
+
+  .skip-to-content {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-terra focus:text-cream focus:px-4 focus:py-2 focus:rounded-sm;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
