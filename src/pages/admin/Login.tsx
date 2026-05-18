@@ -1,18 +1,17 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { Eye, EyeOff, LogIn } from 'lucide-react'
+import { Eye, EyeOff, LogIn, Lock } from 'lucide-react'
 import { useAuth } from '@/lib/auth'
-import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
 export default function Login() {
   const { isAdmin, loading, signIn } = useAuth()
   const navigate = useNavigate()
 
-  const [email, setEmail] = useState('')
+  const [email, setEmail]       = useState('')
   const [password, setPassword] = useState('')
-  const [showPw, setShowPw] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [showPw, setShowPw]     = useState(false)
+  const [error, setError]       = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
 
   if (!loading && isAdmin) return <Navigate to="/admin/carica" replace />
@@ -31,24 +30,58 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-sand flex items-center justify-center p-6">
-      <div className="w-full max-w-md">
-        {/* Header */}
-        <div className="text-center mb-10">
-          <p className="font-display font-bold text-3xl text-ink mb-2">Progetto Briciola</p>
-          <p className="font-lora text-ink-light text-lg">Area riservata ai gestori</p>
+    <div className="min-h-screen flex">
+
+      {/* ── Pannello sinistro — branding ─────────────────────────────────────── */}
+      <div
+        className="hidden lg:flex w-[46%] shrink-0 flex-col justify-between p-14 relative overflow-hidden"
+        style={{
+          background: `
+            radial-gradient(ellipse at 20% 80%, rgba(193,102,58,0.5) 0%, transparent 55%),
+            radial-gradient(ellipse at 80% 15%, rgba(212,168,71,0.15) 0%, transparent 45%),
+            linear-gradient(175deg, #100a05 0%, #2A1E14 60%, #1a0f08 100%)
+          `,
+        }}
+      >
+        <div>
+          <p className="font-sans text-[0.7rem] font-semibold tracking-[.18em] uppercase text-terra-light mb-6">
+            Area Riservata
+          </p>
+          <p className="font-display font-bold text-4xl text-cream leading-tight mb-4">
+            Progetto Briciola
+          </p>
+          <p className="font-lora text-cream/60 text-lg leading-relaxed max-w-xs">
+            Gestisci le foto delle missioni e i messaggi ricevuti dal sito.
+          </p>
         </div>
 
-        <div className="bg-white rounded-sm shadow-md p-8 sm:p-12">
-          <h1 className="font-display text-2xl text-ink mb-8 text-center">Accedi</h1>
+        <p className="font-sans text-xs text-cream/25 tracking-wide">
+          Accesso riservato ai gestori dell'associazione
+        </p>
+      </div>
 
-          <form onSubmit={handleSubmit} noValidate className="space-y-6">
-            <div className="space-y-2">
-              <label
-                htmlFor="email"
-                className="block font-sans text-base font-semibold text-ink"
-              >
-                Indirizzo email
+      {/* ── Pannello destro — form ───────────────────────────────────────────── */}
+      <div className="flex-1 bg-zinc-50 flex items-center justify-center p-8">
+        <div className="w-full max-w-sm">
+
+          {/* Header mobile */}
+          <div className="lg:hidden text-center mb-10">
+            <p className="font-display font-bold text-3xl text-ink mb-1">Progetto Briciola</p>
+            <p className="font-lora text-ink-light">Area riservata ai gestori</p>
+          </div>
+
+          {/* Icona */}
+          <div className="w-12 h-12 rounded-xl bg-terra/10 flex items-center justify-center mb-8">
+            <Lock className="w-5 h-5 text-terra" />
+          </div>
+
+          <h1 className="font-display text-2xl text-ink mb-1">Bentornato</h1>
+          <p className="font-lora text-ink-light mb-8">Inserisci le tue credenziali per accedere.</p>
+
+          <form onSubmit={handleSubmit} noValidate className="space-y-5">
+            <div className="space-y-1.5">
+              <label htmlFor="email" className="block font-sans text-sm font-semibold text-ink">
+                Email
               </label>
               <Input
                 id="email"
@@ -57,16 +90,13 @@ export default function Login() {
                 onChange={e => setEmail(e.target.value)}
                 placeholder="nome@esempio.it"
                 autoComplete="email"
-                className="text-lg py-4 h-auto"
+                className="h-11 bg-white border-zinc-200 focus:border-terra"
                 required
               />
             </div>
 
-            <div className="space-y-2">
-              <label
-                htmlFor="password"
-                className="block font-sans text-base font-semibold text-ink"
-              >
+            <div className="space-y-1.5">
+              <label htmlFor="password" className="block font-sans text-sm font-semibold text-ink">
                 Password
               </label>
               <div className="relative">
@@ -77,40 +107,36 @@ export default function Login() {
                   onChange={e => setPassword(e.target.value)}
                   placeholder="••••••••"
                   autoComplete="current-password"
-                  className="text-lg py-4 h-auto pr-12"
+                  className="h-11 bg-white border-zinc-200 focus:border-terra pr-11"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPw(v => !v)}
                   aria-label={showPw ? 'Nascondi password' : 'Mostra password'}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-light hover:text-ink transition-colors p-1"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-ink transition-colors"
                 >
-                  {showPw ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-sm px-4 py-3">
-                <p className="font-lora text-red-700 text-base">{error}</p>
+              <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+                <p className="font-sans text-red-700 text-sm">{error}</p>
               </div>
             )}
 
-            <Button
+            <button
               type="submit"
               disabled={submitting || !email || !password}
-              className="w-full bg-terra hover:bg-terra-dark text-cream font-sans font-bold text-lg tracking-wide py-4 h-auto rounded-sm transition-all disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-2 bg-terra hover:bg-terra-dark text-cream font-sans font-semibold text-sm tracking-wide py-3 rounded-lg transition-all disabled:opacity-50 mt-2 shadow-md shadow-terra/20"
             >
-              <LogIn className="w-5 h-5 mr-2" />
-              {submitting ? 'Accesso in corso…' : 'Entra'}
-            </Button>
+              <LogIn className="w-4 h-4" />
+              {submitting ? 'Accesso in corso…' : 'Accedi'}
+            </button>
           </form>
         </div>
-
-        <p className="text-center mt-6 font-lora text-ink-light/60 text-sm">
-          Accesso riservato ai gestori di Progetto Briciola
-        </p>
       </div>
     </div>
   )

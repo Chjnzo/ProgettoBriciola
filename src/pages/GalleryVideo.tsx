@@ -9,7 +9,17 @@ import { videos } from '@/data/content'
 import { supabase } from '@/lib/supabase'
 
 // ── Tipi ──────────────────────────────────────────────────────────────────────
-interface Sezione { id: string; value: string; label: string; sort_order: number }
+interface Sezione {
+  id: string
+  value: string
+  label: string
+  sort_order: number
+  sottotitolo: string | null
+  data_partenza: string | null
+  data_rientro: string | null
+  volontari: string | null
+  descrizione: string | null
+}
 interface Foto {
   id: string
   storage_path: string
@@ -117,6 +127,79 @@ function VideoCard({ video, featured, onClick }: { video: typeof videos[number];
   )
 }
 
+// ── Info missione ─────────────────────────────────────────────────────────────
+function InfoMissione({ sezione }: { sezione: Sezione }) {
+  const { sottotitolo, data_partenza, data_rientro, volontari, descrizione } = sezione
+  const hasDati = sottotitolo || data_partenza || volontari || descrizione
+  if (!hasDati) return null
+
+  const righeDescrizione = descrizione
+    ? descrizione.split('\n').map(r => r.trim()).filter(Boolean)
+    : []
+
+  const listaVolontari = volontari
+    ? volontari.split(',').map(v => v.trim()).filter(Boolean)
+    : []
+
+  return (
+    <div className="bg-white rounded-sm shadow-sm border border-sand-dark p-7 mb-10">
+      {sottotitolo && (
+        <p className="font-sans text-[0.75rem] font-semibold tracking-[.14em] uppercase text-terra mb-5">
+          {sottotitolo}
+        </p>
+      )}
+
+      {(data_partenza || data_rientro) && (
+        <div className="flex flex-wrap gap-6 mb-5">
+          {data_partenza && (
+            <div>
+              <span className="font-sans text-xs font-bold tracking-widest uppercase text-ink-light/50 block mb-0.5">
+                Partenza
+              </span>
+              <span className="font-lora text-ink">{data_partenza}</span>
+            </div>
+          )}
+          {data_rientro && (
+            <div>
+              <span className="font-sans text-xs font-bold tracking-widest uppercase text-ink-light/50 block mb-0.5">
+                Rientro
+              </span>
+              <span className="font-lora text-ink">{data_rientro}</span>
+            </div>
+          )}
+        </div>
+      )}
+
+      {listaVolontari.length > 0 && (
+        <div className="mb-5">
+          <span className="font-sans text-xs font-bold tracking-widest uppercase text-ink-light/50 block mb-2">
+            Volontari
+          </span>
+          <p className="font-lora text-ink leading-relaxed">
+            {listaVolontari.join(' · ')}
+          </p>
+        </div>
+      )}
+
+      {righeDescrizione.length > 0 && (
+        <div>
+          <span className="font-sans text-xs font-bold tracking-widest uppercase text-ink-light/50 block mb-3">
+            Obiettivi e attività
+          </span>
+          <ul className="space-y-2">
+            {righeDescrizione.map((riga, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-terra shrink-0" />
+                <span className="font-lora text-ink leading-relaxed">{riga}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  )
+}
+
 // ── Pagina ────────────────────────────────────────────────────────────────────
 export default function GalleryVideo() {
   const [activeVideo, setActiveVideo] = useState<typeof videos[number] | null>(null)
@@ -186,7 +269,8 @@ export default function GalleryVideo() {
   }
 
   const [featuredVideo, ...sideVideos] = videos
-  const labelSezioneAttiva = sezioni.find(s => s.value === sezioneAttiva)?.label ?? ''
+  const sezioneAttivaObj   = sezioni.find(s => s.value === sezioneAttiva)
+  const labelSezioneAttiva = sezioneAttivaObj?.label ?? ''
 
   return (
     <>
@@ -279,6 +363,11 @@ export default function GalleryVideo() {
                 </span>
               )}
             </div>
+          )}
+
+          {/* Descrizione missione */}
+          {sezioneAttivaObj && !loadingFoto && (
+            <InfoMissione sezione={sezioneAttivaObj} />
           )}
 
           {loadingFoto ? (
