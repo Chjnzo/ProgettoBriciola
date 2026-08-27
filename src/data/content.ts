@@ -43,12 +43,16 @@ export const videos = [
 // ─── Timeline progetti completati ─────────────────────────────────────────────
 export const timeline = [
   { year: '1992', title: 'Asilo' },
-  { year: '1993', title: 'Strada Gunchirie–Hured e pozzo acqua' },
+  { year: '1993', title: 'Strada Gunchirie–Hured e primo pozzo acqua' },
   { year: '1997', title: 'Scuole — primo edificio' },
   { year: '2007', title: 'Scuole — secondo edificio' },
-  { year: '2008', title: 'Scuole — terzo edificio, ponte Gunchirie–Hured, cisterna e acquedotto' },
+  { year: '2008', title: 'Scuole — terzo edificio, ponte Hured, cisterna e acquedotto' },
   { year: '2012', title: 'Ospedale — primo blocco' },
   { year: '2015', title: 'Ospedale — secondo blocco' },
+  { year: '2018', title: 'Inaugurazione ospedale completo' },
+  { year: '2024', title: 'Tetto della scuola rinnovato' },
+  { year: '2025', title: 'Costruzione perimetro dell\'ospedale' },
+  { year: '2025', title: 'Nuovo pozzo a Hured · Primo pozzo nel villaggio di Zizo' },
   { year: '—',    title: '6 chiese costruite (1 a Hured, 5 nei villaggi vicini)' },
 ]
 
@@ -73,7 +77,7 @@ export const ibanList = [
 ]
 
 export const orgInfo = {
-  name: 'Progetto Briciola ONLUS',
+  name: 'Progetto Briciola ODV',
   codiceFiscale: '02996790164',
   address: 'Via F. Corridoni, 61 — 24124 Bergamo',
   sedeLegale: 'Via Quarti — Scanzorosciate (BG)',
@@ -82,47 +86,57 @@ export const orgInfo = {
   facebook: 'https://www.facebook.com/progettobriciola',
   instagram: 'https://www.instagram.com/progettobriciolaonlus',
   youtube: 'https://www.youtube.com/@progettobriciola',
-  emailInfo: '[EMAIL DA INSERIRE]',
-  emailSegreteria: '[EMAIL DA INSERIRE]',
-  emailAdozioni: '[EMAIL DA INSERIRE]',
+  emailInfo: 'info@progettobriciola.org',
+  emailSegreteria: 'info@progettobriciola.org',
+  emailAdozioni: 'info@progettobriciola.org',
 }
 
 // ─── Team Italia ──────────────────────────────────────────────────────────────
 export const team = [
   {
-    name: 'Francesco Zana',
+    name: 'Francesco "Franco" Zana',
     role: 'Presidente',
-    bio: '[DA INSERIRE]',
+
   },
   {
     name: 'Bzunesh "Busu" Kifle',
     role: 'Vicepresidente',
-    bio: '[DA INSERIRE]',
+
   },
   {
     name: 'Davide Manenti',
     role: 'Tesoriere',
-    bio: '[DA INSERIRE]',
+
   },
   {
-    name: 'Mariam Zana',
-    role: 'Adozioni a distanza',
-    bio: '[DA INSERIRE]',
-  },
-  {
-    name: 'Federica Manenti',
-    role: 'Comunicazione',
-    bio: '[DA INSERIRE]',
-  },
-  {
-    name: 'Gianantonio Rozzini',
-    role: 'Collaboratore',
-    bio: '[DA INSERIRE]',
-  },
-  {
-    name: 'Sara Nesci',
+    name: 'Agnese Signorelli',
     role: 'Collaboratrice',
-    bio: '[DA INSERIRE]',
+
+  },
+  {
+    name: 'Samuele Capobianco',
+    role: 'Collaboratore',
+
+  },
+  {
+    name: 'Laura Nesci',
+    role: 'Collaboratrice',
+
+  },
+  {
+    name: 'Vincenzo Trapani',
+    role: 'Collaboratore',
+
+  },
+  {
+    name: 'Elisabeth Trapani',
+    role: 'Collaboratrice',
+
+  },
+  {
+    name: 'Fikreyohannes Kifle',
+    role: 'Collaboratore',
+
   },
 ]
 
@@ -131,13 +145,13 @@ export const teamEtiopia = [
     name: 'Alemu Gebre',
     role: 'Presidente TESFA',
     location: 'Addis Abeba',
-    bio: '[DA INSERIRE]',
+
   },
   {
     name: 'Hailé Wondineh',
     role: 'Referente TESFA a Hured',
     location: 'Hured',
-    bio: '[DA INSERIRE]',
+
   },
 ]
 
@@ -153,11 +167,12 @@ export const etiopiaFacts = [
 ]
 
 export const etiopiaStats = [
-  { value: '39%', label: 'della popolazione vive con meno di 1$/giorno', source: 'Banca Mondiale' },
-  { value: '46%', label: 'soffre di denutrizione', source: 'UNICEF' },
-  { value: '~55', label: 'anni di aspettativa di vita media', source: 'OMS' },
-  { value: '52%', label: 'ha accesso ad acqua pulita', source: 'UNICEF' },
-  { value: '~5%', label: 'tasso HIV nella zona di Hured', source: 'UNAIDS' },
+  { value: '39%',  label: 'della popolazione vive con meno di 1$/giorno', source: 'Banca Mondiale' },
+  { value: '46%',  label: 'soffre di denutrizione cronica', source: 'UNICEF' },
+  { value: '~55',  label: 'anni di aspettativa di vita media', source: 'OMS' },
+  { value: '52%',  label: 'ha accesso ad acqua potabile pulita', source: 'UNICEF' },
+  { value: '43‰',  label: 'tasso di mortalità infantile ogni 1.000 nati', source: 'UNICEF' },
+  { value: '~5%',  label: 'tasso di sieroprevalenza HIV nella zona di Hured', source: 'UNAIDS' },
 ]
 
 // ─── Adozione a distanza ──────────────────────────────────────────────────────

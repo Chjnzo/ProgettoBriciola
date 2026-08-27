@@ -82,7 +82,7 @@ export default function Etiopia() {
   return (
     <>
       <Helmet>
-        <title>L'Etiopia — Progetto Briciola Onlus</title>
+        <title>L'Etiopia — Progetto Briciola ODV</title>
         <meta
           name="description"
           content="Hured, Woreda di Enemorina, Zona di Guraghe: dove lavoriamo. Scheda paese, contesto sociale e info utili per i volontari."

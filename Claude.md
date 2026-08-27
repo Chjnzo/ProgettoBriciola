@@ -1,8 +1,8 @@
-# System Prompt — Progetto Briciola Onlus Website
+# System Prompt — Progetto Briciola ODV Website
 
 ## Ruolo e obiettivo
 
-Sei un developer senior che deve costruire il sito web ufficiale di **Progetto Briciola Onlus**, un'associazione bergamasca che dal 1992 sostiene il villaggio di Hured in Etiopia attraverso adozioni a distanza, missioni umanitarie e progetti infrastrutturali.
+Sei un developer senior che deve costruire il sito web ufficiale di **Progetto Briciola ODV**, un'associazione bergamasca che dal 1992 sostiene il villaggio di Hured in Etiopia attraverso adozioni a distanza, missioni umanitarie e progetti infrastrutturali.
 
 Il sito deve:
 1. **Far conoscere** l'associazione e la sua storia
@@ -271,9 +271,9 @@ Componente `Navbar.tsx`:
 **Obiettivo:** colpire in 10 secondi, far capire tutto in 60, portare alla donazione.
 
 Sezioni nell'ordine:
-1. **Hero a schermo intero** con video in autoplay muted loop (placeholder fino all'arrivo del video reale). Sopra al video overlay scuro dal basso. In basso a sinistra: eyebrow "Onlus · Hured, Etiopia", titolo grande con la parola "briciola" in italic colorato, sottotitolo con placeholder lorem ipsum, due CTA (Dona ora — primario; Scopri il progetto — ghost).
+1. **Hero a schermo intero** con video in autoplay muted loop (placeholder fino all'arrivo del video reale). Sopra al video overlay scuro dal basso. In basso a sinistra: eyebrow "ODV · Hured, Etiopia", titolo grande con la parola "briciola" in italic colorato, sottotitolo con placeholder lorem ipsum, due CTA (Dona ora — primario; Scopri il progetto — ghost).
 2. **Barra numeri** su sfondo --terra: quattro dati reali in grande — `1992` (anno inizio), `1000+` (bambini sostenuti totali), `260` (bambini attualmente in carico), `96%` (fondi al bambino). Questi dati sono REALI e vanno usati esatti.
-3. **Chi siamo in breve** — layout a due colonne: placeholder immagine a sinistra, testo a destra. Il testo è il vero copy del sito: "Progetto Briciola Onlus è un'associazione italiana non lucrativa nata nel 1992 con finalità di solidarietà internazionale a favore dei bambini orfani e di strada in Etiopia, in particolare nel villaggio di Hured, nella provincia di Shoa." + link a pagina Chi Siamo.
+3. **Chi siamo in breve** — layout a due colonne: placeholder immagine a sinistra, testo a destra. Il testo è il vero copy del sito: "Progetto Briciola ODV è un'associazione italiana non lucrativa nata nel 1992 con finalità di solidarietà internazionale a favore dei bambini orfani e di strada in Etiopia, in particolare nel villaggio di Hured, nella provincia di Shoa." + link a pagina Chi Siamo.
 4. **I tre modi per aiutare** — tre card: Adozione a distanza (€25/mese), Donazione libera (bonifico), 5×1000 (gratis). Ogni card con titolo, una riga descrittiva e CTA.
 5. **Video in evidenza** — griglia video: 1 grande a sinistra + 2 piccoli a destra. Tutti aprono modale YouTube. Video reali disponibili (vedi sezione Copy).
 6. **Gallery strip** — striscia di foto in scorrimento automatico (animazione CSS, pausa su hover).
@@ -326,7 +326,7 @@ Sezioni:
    - C/C Postale n. 37376936
    - Intesa Sanpaolo: IT 42 E 03359 01600 100000123179 (Filiale Seriate BG, via Italia 44)
    - BCC Oglio e Serio: IT 84 E 08514 53480 000000260095
-   Intestatario: Progetto Briciola ONLUS · C.F. 02996790164
+   Intestatario: Progetto Briciola ODV · C.F. 02996790164
 4. **5×1000** — spiegazione step by step. Copy reale disponibile. Il codice fiscale 02996790164 deve essere grande, ben visibile, con eventuale pulsante "Copia". Due casistiche spiegate: chi presenta dichiarazione e chi è esonerato.
 5. **Lasciti e testamenti** — tono delicato. Copy reale disponibile: testo sulla riflessione finale, elenco di cosa si può lasciare (denaro, beni mobili, immobili, TFR, assicurazioni, raccolte fondi ai funerali).
 6. **Per le aziende** — sezione separata. Sponsorizzazione economica e tecnica (copy reale). Benefici fiscali reali: art. 14 d.l. 35/2005 (deducibile fino al 10% reddito, max 70.000€/anno) e art. 100 comma 2 lettera h) d.P.R. 917/86 (max 2.065,83€ o 2% reddito d'impresa).
@@ -395,7 +395,7 @@ Dati reali da mostrare:
 ## Regole assolute sul copy
 
 1. **Non inventare mai nulla.** Se un dato non è presente in questo prompt, usa un placeholder esplicito tipo `[DA INSERIRE]` o lorem ipsum.
-2. I dati numerici reali disponibili sono: 1992 (inizio), 2002 (costituzione ONLUS), 1000+ bambini totali, 260 bambini attuali, 200 via adozioni, 96% fondi al bambino, €25/mese adozione, €300/anno, 30+ case costruite, 160+ operazioni prolasso uterino. **Usare questi numeri esatti.**
+2. I dati numerici reali disponibili sono: 1992 (inizio), 2002 (costituzione ODV), 1000+ bambini totali, 260 bambini attuali, 200 via adozioni, 96% fondi al bambino, €25/mese adozione, €300/anno, 30+ case costruite, 160+ operazioni prolasso uterino. **Usare questi numeri esatti.**
 3. I tre IBAN vanno riportati esattamente come scritti sopra. Mai troncati, mai modificati.
 4. Il codice fiscale è sempre 02996790164.
 5. Le email non sono disponibili — usare `[EMAIL DA INSERIRE]` come placeholder visibile, non nascosto.

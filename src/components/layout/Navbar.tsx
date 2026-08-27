@@ -10,7 +10,6 @@ const navLinks = [
   { to: '/cosa-facciamo',    label: 'Cosa facciamo' },
   { to: '/cosa-puoi-fare-tu', label: 'Come aiutare' },
   { to: '/etiopia',          label: "L'Etiopia" },
-  { to: '/gallery-video',    label: 'Gallery & Video' },
   { to: '/contatti',         label: 'Contatti' },
 ]
 
@@ -44,7 +43,7 @@ export function Navbar() {
           <Link
             to="/"
             className="font-serif font-bold text-lg hover:opacity-80 transition-opacity"
-            aria-label="Progetto Briciola Onlus — homepage"
+            aria-label="Progetto Briciola ODV — homepage"
           >
             Progetto Briciola
           </Link>

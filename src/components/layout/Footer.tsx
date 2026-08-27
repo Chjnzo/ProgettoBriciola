@@ -39,7 +39,7 @@ export function Footer() {
               Progetto Briciola
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-cream/70 max-w-xs">
-              Onlus bergamasca nata nel 1992. Sosteniamo il villaggio di Hured in Etiopia attraverso
+              ODV bergamasca nata nel 1992. Sosteniamo il villaggio di Hured in Etiopia attraverso
               adozioni a distanza, missioni annuali e infrastrutture.
             </p>
 

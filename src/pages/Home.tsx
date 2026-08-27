@@ -54,7 +54,7 @@ function HeroSection() {
         <div className="max-w-2xl">
           <ScrollReveal>
             <p className="font-sans text-[0.75rem] font-semibold tracking-[.18em] uppercase text-terra-light mb-5">
-              Onlus · Hured, Etiopia
+              ODV · Hured, Etiopia
             </p>
           </ScrollReveal>
 
@@ -151,7 +151,7 @@ function ChiSiamoBreve() {
                 Trent'anni a fianco di Hured
               </h2>
               <p className="font-lora text-ink-light leading-relaxed mb-4">
-                Progetto Briciola Onlus è un'associazione italiana non lucrativa nata nel 1992
+                Progetto Briciola ODV è un'associazione italiana non lucrativa nata nel 1992
                 con finalità di solidarietà internazionale a favore dei bambini orfani e di
                 strada in Etiopia, in particolare nel villaggio di Hured, nella provincia di Shoa.
               </p>
@@ -468,12 +468,12 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Progetto Briciola Onlus — Dal 1992 con Hured, Etiopia</title>
+        <title>Progetto Briciola ODV — Dal 1992 con Hured, Etiopia</title>
         <meta
           name="description"
           content="Associazione bergamasca che dal 1992 sostiene i bambini di Hured, Etiopia. Adozioni a distanza da €25/mese, donazioni libere e 5×1000."
         />
-        <meta property="og:title" content="Progetto Briciola Onlus" />
+        <meta property="og:title" content="Progetto Briciola ODV" />
         <meta
           property="og:description"
           content="Dal 1992 sosteniamo il villaggio di Hured in Etiopia. 1000+ bambini aiutati. Il 96% dei fondi va direttamente al bambino."

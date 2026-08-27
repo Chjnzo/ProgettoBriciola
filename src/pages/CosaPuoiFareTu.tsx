@@ -46,17 +46,19 @@ function CopyButton({ value, label }: { value: string; label?: string }) {
 
 function IbanCard({ iban }: { iban: (typeof ibanList)[number] }) {
   return (
-    <div className="bg-white rounded-sm p-8 flex flex-col gap-4">
+    <div className="bg-white rounded-sm p-8 flex flex-col gap-4 h-full">
       <p className="font-sans text-[0.78rem] font-semibold tracking-[.12em] uppercase text-terra">
         {iban.label}
       </p>
-      <p className="font-mono text-ink text-lg sm:text-xl leading-none tracking-wider break-all">
+      <p className="font-mono text-ink text-[1rem] leading-relaxed tracking-wide break-all">
         {iban.display}
       </p>
       {iban.note && (
         <p className="font-lora text-ink-light text-sm">{iban.note}</p>
       )}
-      <CopyButton value={iban.value} label={`IBAN ${iban.label}`} />
+      <div className="mt-auto pt-2">
+        <CopyButton value={iban.value} label={`IBAN ${iban.label}`} />
+      </div>
     </div>
   )
 }
@@ -65,7 +67,7 @@ export default function CosaPuoiFareTu() {
   return (
     <>
       <Helmet>
-        <title>Come puoi aiutare — Progetto Briciola Onlus</title>
+        <title>Come puoi aiutare — Progetto Briciola ODV</title>
         <meta
           name="description"
           content="Adozione a distanza da €25/mese, donazioni libere via bonifico, 5×1000 gratuito, lasciti e sponsorizzazioni aziendali."
@@ -199,18 +201,19 @@ export default function CosaPuoiFareTu() {
           </div>
 
           <ScrollReveal delay={0.3}>
-            <div className="bg-sand-dark rounded-sm p-6 inline-flex flex-wrap items-center gap-6">
+            <div className="bg-terra/8 border border-terra/20 rounded-sm p-6 flex flex-wrap items-center gap-x-12 gap-y-4">
               <div>
                 <p className="font-sans text-[0.72rem] font-semibold tracking-[.12em] uppercase text-ink-light mb-1">
                   Intestatario
                 </p>
-                <p className="font-display text-lg text-ink">{orgInfo.name}</p>
+                <p className="font-display text-xl text-ink">{orgInfo.name}</p>
               </div>
+              <div className="hidden sm:block w-px self-stretch bg-terra/20" />
               <div>
                 <p className="font-sans text-[0.72rem] font-semibold tracking-[.12em] uppercase text-ink-light mb-1">
                   Codice Fiscale
                 </p>
-                <p className="font-mono text-ink text-lg tracking-wider">{orgInfo.codiceFiscale}</p>
+                <p className="font-mono text-ink text-xl tracking-wider">{orgInfo.codiceFiscale}</p>
               </div>
             </div>
           </ScrollReveal>
@@ -220,7 +223,7 @@ export default function CosaPuoiFareTu() {
       {/* ── 5×1000 ────────────────────────────────────────────────────────── */}
       <section id="cinquepermille" className="bg-cream py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <ScrollReveal>
                 <Eyebrow className="mb-5">Non ti costa nulla</Eyebrow>
@@ -229,34 +232,33 @@ export default function CosaPuoiFareTu() {
                 <h2 className="text-ink mb-6">5×1000</h2>
               </ScrollReveal>
               <ScrollReveal delay={0.14}>
-                <p className="font-lora text-ink-light text-lg leading-relaxed mb-6">
+                <p className="font-lora text-ink-light text-lg leading-relaxed mb-10">
                   Il 5×1000 è una quota delle tue tasse che lo Stato destina a un'organizzazione
                   non-profit a tua scelta. Non è un costo aggiuntivo: è denaro già dovuto al fisco
-                  che puoi redirigere verso chi fa del bene.
+                  che puoi redirigere verso chi fa del bene. Basta una firma.
                 </p>
               </ScrollReveal>
 
-              {/* Steps */}
               <ScrollReveal delay={0.2}>
-                <div className="space-y-6 mb-10">
+                <div className="space-y-8">
                   {[
                     {
                       n: '1',
-                      title: 'Nella dichiarazione dei redditi',
-                      body: 'Nella sezione "Sostegno del volontariato e delle altre organizzazioni non lucrative", firma e scrivi il codice fiscale.',
+                      title: 'Hai la dichiarazione dei redditi?',
+                      body: 'Nella sezione "Sostegno del volontariato e delle altre organizzazioni non lucrative" firma e scrivi il codice fiscale 02996790164 nell\'apposita casella.',
                     },
                     {
                       n: '2',
-                      title: 'Se sei esonerato dalla dichiarazione',
-                      body: 'Puoi comunque destinare il 5×1000. Chiedi al CAF o all\'ufficio postale il modulo CUD/730 apposito — la firma è gratuita e non crea obblighi.',
+                      title: 'Sei esonerato dalla dichiarazione?',
+                      body: 'Puoi destinare il 5×1000 lo stesso. Recati al CAF o all\'ufficio postale e chiedi il modulo apposito: la firma è gratuita e non comporta nessun obbligo.',
                     },
                   ].map((step) => (
-                    <div key={step.n} className="flex gap-5">
-                      <div className="w-8 h-8 rounded-full bg-terra text-cream flex items-center justify-center font-display font-bold shrink-0 mt-0.5">
+                    <div key={step.n} className="flex gap-6">
+                      <div className="w-9 h-9 rounded-full bg-terra text-cream flex items-center justify-center font-display font-bold text-lg shrink-0 mt-0.5">
                         {step.n}
                       </div>
                       <div>
-                        <p className="font-sans font-semibold text-ink mb-1">{step.title}</p>
+                        <p className="font-sans font-semibold text-ink text-[1rem] mb-2">{step.title}</p>
                         <p className="font-lora text-ink-light leading-relaxed">{step.body}</p>
                       </div>
                     </div>
@@ -267,19 +269,23 @@ export default function CosaPuoiFareTu() {
 
             {/* Codice fiscale callout */}
             <ScrollReveal delay={0.1}>
-              <div className="bg-ink rounded-sm p-10 lg:p-14 text-center">
-                <p className="font-sans text-[0.78rem] font-semibold tracking-[.14em] uppercase text-terra-light mb-6">
-                  Codice fiscale da inserire
-                </p>
-                <p className="font-mono text-gold text-[2.2rem] sm:text-[2.8rem] leading-none tracking-[.12em] mb-8">
-                  {orgInfo.codiceFiscale}
-                </p>
+              <div className="bg-ink rounded-sm p-10 lg:p-14 text-center flex flex-col items-center gap-8">
+                <div>
+                  <p className="font-sans text-[0.78rem] font-semibold tracking-[.14em] uppercase text-terra-light mb-6">
+                    Codice fiscale da inserire
+                  </p>
+                  <p className="font-mono text-gold text-[2.4rem] sm:text-[3rem] leading-none tracking-[.14em]">
+                    {orgInfo.codiceFiscale}
+                  </p>
+                </div>
                 <CopyButton value={orgInfo.codiceFiscale} label="codice fiscale" />
-                <div className="mt-10 pt-8 border-t border-white/10 text-left">
+                <div className="w-full pt-6 border-t border-white/10 text-left">
+                  <p className="font-sans text-[0.72rem] font-semibold tracking-[.1em] uppercase text-terra-light mb-2">
+                    Dove trovare la casella
+                  </p>
                   <p className="font-lora text-cream/60 text-sm leading-relaxed">
-                    Nella casella <em>"Sostegno del volontariato e delle altre organizzazioni non
-                    lucrative di utilità sociale"</em> — firma nella colonna apposita e scrivi il
-                    codice.
+                    Modello 730 o Redditi PF — sezione <em>"Sostegno del volontariato e delle
+                    organizzazioni non lucrative di utilità sociale"</em>.
                   </p>
                 </div>
               </div>
@@ -366,13 +372,13 @@ export default function CosaPuoiFareTu() {
             </ScrollReveal>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
             <ScrollReveal delay={0}>
-              <div className="bg-white rounded-sm p-10 h-full">
+              <div className="bg-white border border-sand-dark rounded-sm p-10 h-full">
                 <div className="w-12 h-12 rounded-sm bg-terra/10 flex items-center justify-center mb-6">
                   <Building2 className="w-6 h-6 text-terra" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-display text-xl text-ink mb-4">Sponsorizzazione economica</h3>
+                <h3 className="font-display text-2xl text-ink mb-4">Sponsorizzazione economica</h3>
                 <p className="font-lora text-ink-light leading-relaxed">
                   Contribuisci al finanziamento diretto di progetti specifici — una scuola, un
                   blocco dell'ospedale, un sistema idrico. Riceverai aggiornamenti documentati
@@ -383,11 +389,11 @@ export default function CosaPuoiFareTu() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
-              <div className="bg-white rounded-sm p-10 h-full">
+              <div className="bg-white border border-sand-dark rounded-sm p-10 h-full">
                 <div className="w-12 h-12 rounded-sm bg-terra/10 flex items-center justify-center mb-6">
                   <HandHeart className="w-6 h-6 text-terra" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-display text-xl text-ink mb-4">Supporto tecnico</h3>
+                <h3 className="font-display text-2xl text-ink mb-4">Supporto tecnico</h3>
                 <p className="font-lora text-ink-light leading-relaxed">
                   Sei un'impresa edile, un ingegnere, un medico, un professionista IT? Le tue
                   competenze valgono quanto il denaro. Contattaci per scoprire come mettere a
@@ -399,20 +405,20 @@ export default function CosaPuoiFareTu() {
 
           {/* Benefici fiscali in accordion */}
           <ScrollReveal delay={0.2}>
-            <div className="bg-sand rounded-sm p-8 md:p-10 max-w-3xl">
+            <div className="bg-sand border border-sand-dark rounded-sm p-8 md:p-10">
               <div className="flex items-center gap-3 mb-6">
                 <FileText className="w-5 h-5 text-terra shrink-0" strokeWidth={1.5} />
                 <p className="font-sans font-semibold text-ink tracking-wide">
                   Benefici fiscali per le aziende
                 </p>
               </div>
-              <Accordion type="single" collapsible>
+              <Accordion type="single" collapsible className="max-w-3xl">
                 <AccordionItem value="art14">
                   <AccordionTrigger>
                     Art. 14 D.L. 35/2005 — Deducibilità dal reddito d'impresa
                   </AccordionTrigger>
                   <AccordionContent>
-                    Le erogazioni liberali in denaro a favore di ONLUS sono deducibili dal reddito
+                    Le erogazioni liberali in denaro a favore di ODV sono deducibili dal reddito
                     complessivo del soggetto erogante <strong>fino al 10% del reddito dichiarato</strong>{' '}
                     e, comunque, nella misura massima di <strong>€70.000 annui</strong>.
                   </AccordionContent>
@@ -428,9 +434,9 @@ export default function CosaPuoiFareTu() {
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
-              <p className="mt-6 font-sans text-[0.72rem] text-ink-light/60 leading-relaxed">
+              <p className="mt-6 font-sans text-[0.72rem] text-ink-light/60 leading-relaxed max-w-3xl">
                 Ti consigliamo di verificare la normativa vigente con il tuo consulente fiscale.
-                Progetto Briciola è iscritta all'Anagrafe delle ONLUS, CF 02996790164.
+                Progetto Briciola è iscritta al RUNTS come ODV, CF 02996790164.
               </p>
             </div>
           </ScrollReveal>

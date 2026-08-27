@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { orgInfo } from '@/data/content'
-import { supabase } from '@/lib/supabase'
 
 // ─── Schema validazione ───────────────────────────────────────────────────────
 const schema = z.object({
@@ -96,22 +95,11 @@ export default function Contatti() {
   } = useForm<FormData>({ resolver: zodResolver(schema) })
 
   async function onSubmit(data: FormData) {
-    const { error } = await supabase.from('contatti').insert({
-      nome:      data.nome,
-      email:     data.email,
-      oggetto:   data.oggetto,
-      messaggio: data.messaggio,
-    })
-
-    if (error) {
-      toast.error('Errore nell\'invio. Riprova o scrivici direttamente.', {
-        description: 'Se il problema persiste contattaci al telefono.',
-      })
-      return
-    }
-
-    toast.success('Messaggio inviato!', {
-      description: 'Ti risponderemo entro 48 ore.',
+    const body = `Nome: ${data.nome}\nEmail: ${data.email}\n\n${data.messaggio}`
+    const mailto = `mailto:${orgInfo.emailInfo}?subject=${encodeURIComponent(data.oggetto)}&body=${encodeURIComponent(body)}`
+    window.location.href = mailto
+    toast.success('Apertura client email…', {
+      description: 'Si aprirà la tua app di posta con il messaggio precompilato.',
     })
     reset()
   }
@@ -119,10 +107,10 @@ export default function Contatti() {
   return (
     <>
       <Helmet>
-        <title>Contatti — Progetto Briciola Onlus</title>
+        <title>Contatti — Progetto Briciola ODV</title>
         <meta
           name="description"
-          content="Contatta Progetto Briciola Onlus. Via F. Corridoni 61, Bergamo. Tel. +39 339 3849741."
+          content="Contatta Progetto Briciola ODV. Via F. Corridoni 61, Bergamo. Tel. +39 339 3849741."
         />
       </Helmet>
 
@@ -252,9 +240,7 @@ export default function Contatti() {
                   <Eyebrow className="mb-6">Email</Eyebrow>
                   <div className="space-y-5">
                     {[
-                      { label: 'Info generali',       value: orgInfo.emailInfo },
-                      { label: 'Segreteria',           value: orgInfo.emailSegreteria },
-                      { label: 'Adozioni a distanza',  value: orgInfo.emailAdozioni },
+                      { label: 'Email', value: orgInfo.emailInfo },
                     ].map(({ label, value }) => (
                       <div key={label} className="flex items-start gap-4">
                         <div className="w-9 h-9 rounded-sm bg-terra/10 flex items-center justify-center shrink-0 mt-0.5">

@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import { Hospital, GraduationCap, Wrench, Home, HeartHandshake, Stethoscope } from 'lucide-react'
+import { Hospital, GraduationCap, Wrench, Home, HeartHandshake, Stethoscope, BookOpen, Sprout } from 'lucide-react'
 import { PageHero } from '@/components/PageHero'
 import { Eyebrow } from '@/components/Eyebrow'
 import { ScrollReveal } from '@/components/ScrollReveal'
@@ -8,10 +8,10 @@ import { timeline, etiopiaStats } from '@/data/content'
 const progettiInCorso = [
   {
     icon: Hospital,
-    title: 'Ospedale di Hured',
+    title: 'Invio volontari',
     description:
-      "Il progetto più ambizioso: un ospedale che serve un bacino di oltre 50.000 persone. Il primo blocco è stato completato nel 2012, il secondo nel 2015. Oggi lavoriamo per il completamento e il mantenimento delle strutture esistenti, garantendo cure mediche dove prima non esistevano.",
-    status: 'In corso',
+      "Ogni anno organizziamo due turni da 15 giorni a Hured: in media 15–20 persone tra medici, infermieri e manutentori. Portano competenze, strumenti e presenza umana dove entrambe fanno la differenza.",
+    status: 'Annuale',
   },
   {
     icon: GraduationCap,
@@ -27,22 +27,29 @@ const progettiInCorso = [
       "Strade, ponti, acquedotto, cisterne, scuole: ogni infrastruttura costruita richiede manutenzione. Una parte costante del nostro lavoro garantisce che le opere degli anni passati continuino a funzionare per le generazioni future.",
     status: 'Continuo',
   },
+  {
+    icon: Sprout,
+    title: 'Agricoltura e allevamento',
+    description:
+      "Stiamo raccogliendo fondi per avviare un progetto di sviluppo rurale che cambi le prospettive economiche dei villaggi: campi da coltivare, animali da allevare, risorse che rimangono nella comunità. Un'autonomia che non dipende dagli aiuti, ma li trasforma in futuro.",
+    status: 'In sviluppo',
+  },
 ]
 
 const iniziativeSpeciali = [
   {
     icon: Home,
-    stat: '30+',
+    stat: '25+',
     title: 'Case per senzatetto',
     description:
-      "Oltre trenta abitazioni costruite per le famiglie più vulnerabili del villaggio. Un tetto, quattro muri, una porta: la dignità minima che ogni famiglia merita.",
+      "Venticinque abitazioni costruite per le famiglie più vulnerabili di Hured. Mattone dopo mattone, abbiamo trasformato situazioni di precarietà assoluta in un luogo sicuro dove crescere, ripararsi e ricominciare.",
   },
   {
-    icon: HeartHandshake,
-    title: 'Sostegno agli anziani',
-    stat: '—',
+    icon: BookOpen,
+    stat: '800+',
+    title: 'La scuola di Hured',
     description:
-      "Gli anziani soli e privi di reddito ricevono un sostegno economico mensile che permette loro di coprire le spese essenziali. Una risposta concreta all'abbandono che colpisce i più vecchi nelle comunità rurali.",
+      "Costruita e cresciuta grazie a Progetto Briciola, la scuola di Hured ha formato generazioni di ragazzi: oggi accoglie oltre 800 alunni. È ora gestita dallo Stato etiopico — il segno concreto che un'istituzione nata dal nulla è diventata un pilastro della comunità.",
   },
   {
     icon: Stethoscope,
@@ -57,7 +64,7 @@ export default function CosaFacciamo() {
   return (
     <>
       <Helmet>
-        <title>Cosa facciamo — Progetto Briciola Onlus</title>
+        <title>Cosa facciamo — Progetto Briciola ODV</title>
         <meta
           name="description"
           content="I progetti di Progetto Briciola a Hured: ospedale, scuole, acquedotto, adozioni a distanza e molto altro dal 1992."
@@ -82,7 +89,7 @@ export default function CosaFacciamo() {
             <h2 className="text-ink max-w-xl mb-14">Progetti in corso</h2>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 gap-8">
             {progettiInCorso.map((p, i) => (
               <ScrollReveal key={p.title} delay={i * 0.1}>
                 <div className="bg-white rounded-sm p-10 h-full flex flex-col transition-transform hover:-translate-y-1 duration-300">
@@ -222,15 +229,17 @@ export default function CosaFacciamo() {
             </ScrollReveal>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-sm overflow-hidden">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-px bg-white/8 rounded-sm overflow-hidden">
             {etiopiaStats.map((stat, i) => (
-              <ScrollReveal key={i} delay={i * 0.07}>
-                <div className="bg-ink p-10 flex flex-col gap-3">
-                  <p className="font-display text-[3.2rem] leading-none text-terra-light">
+              <ScrollReveal key={i} delay={i * 0.06}>
+                <div className="bg-ink/90 p-8 lg:p-10 flex flex-col gap-2 h-full">
+                  <p className="font-display text-[2.8rem] lg:text-[3.2rem] leading-none text-terra-light">
                     {stat.value}
                   </p>
-                  <p className="font-lora text-cream/80 leading-snug">{stat.label}</p>
-                  <p className="font-sans text-[0.72rem] tracking-[.1em] uppercase text-cream/35 mt-auto">
+                  <p className="font-lora text-cream/80 leading-snug text-[0.95rem] lg:text-base">
+                    {stat.label}
+                  </p>
+                  <p className="font-sans text-[0.68rem] tracking-[.1em] uppercase text-cream/30 mt-auto pt-4">
                     Fonte: {stat.source}
                   </p>
                 </div>

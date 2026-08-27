@@ -47,7 +47,7 @@ function PercheBriciola() {
           <div className="lg:col-span-3 space-y-6 font-lora text-ink-light text-[1.05rem] leading-[1.8]">
             <ScrollReveal>
               <p>
-                Progetto Briciola Onlus è un'associazione italiana non lucrativa nata nel{' '}
+                Progetto Briciola ODV è un'associazione italiana non lucrativa nata nel{' '}
                 <strong className="text-ink font-medium">1992</strong> con finalità di solidarietà
                 internazionale a favore dei bambini orfani e di strada in Etiopia, in particolare
                 nel villaggio di Hured, nella provincia di Shoa.
@@ -56,11 +56,11 @@ function PercheBriciola() {
 
             <ScrollReveal delay={0.08}>
               <p>
-                Il nome nasce da una storia vera.{' '}
-                <span className="text-ink-light/60 italic">
-                  [DA INSERIRE — la storia di Busu e la radio: come è nata la connessione con
-                  Hured, cosa ha sentito, cosa ha mosso i fondatori all'azione.]
-                </span>
+                Il nome nasce da una storia vera. Nasce dalla visione di Busu di aiutare il suo
+                popolo: i primi contributi erano appena 500 lire — briciole, letteralmente. Un nome
+                scelto non per caso, ma per portare con sé un messaggio preciso: basta davvero poco
+                per fare la differenza nella vita di qualcuno. Anche una briciola, donata con il
+                cuore, può accendere una speranza.
               </p>
             </ScrollReveal>
 
@@ -86,11 +86,12 @@ function PercheBriciola() {
 
             <ScrollReveal delay={0.2}>
               <p>
-                <span className="text-ink-light/60 italic">
-                  [DA INSERIRE — il collegamento diretto tra la parabola biblica e la scelta dei
-                  fondatori: l'impulso a muoversi nonostante l'incertezza, la fiducia che anche
-                  una "briciola" di azione possa cambiare la vita di qualcuno.]
-                </span>
+                Quella stessa fiducia — che basti una briciola di coraggio per rompere
+                l'immobilismo — è il cuore del nome. Come i quattro lebbrosi del Secondo Libro dei
+                Re che, invece di restare fermi ad aspettare la morte, decisero di muoversi verso
+                l'ignoto e trovarono abbondanza, così i fondatori di Progetto Briciola scelsero di
+                agire: non aspettare che qualcun altro risolvesse, ma fare il primo passo, piccolo
+                quanto una briciola, nella direzione giusta.
               </p>
             </ScrollReveal>
 
@@ -132,7 +133,7 @@ function PercheBriciola() {
                 <dl className="space-y-4">
                   {[
                     { dt: 'Fondata', dd: '1992' },
-                    { dt: 'Riconosciuta ONLUS', dd: '2002' },
+                    { dt: 'Iscritta come ODV', dd: '2002' },
                     { dt: 'Sede operativa', dd: 'Bergamo' },
                     { dt: 'Codice Fiscale', dd: '02996790164' },
                   ].map(({ dt, dd }) => (
@@ -158,31 +159,24 @@ function PercheBriciola() {
 function TeamCard({
   name,
   role,
-  bio,
   colorClass,
 }: {
   name: string
   role: string
-  bio: string
   colorClass: string
 }) {
   return (
     <div className="flex flex-col items-center text-center group">
-      {/* Avatar */}
       <div
         className={`w-20 h-20 rounded-full flex items-center justify-center mb-4 text-lg font-serif font-bold transition-transform duration-300 group-hover:scale-105 ${colorClass}`}
         aria-hidden="true"
       >
         {initials(name)}
       </div>
-
       <h3 className="font-serif text-base text-ink mb-0.5">{name}</h3>
-      <p className="font-sans text-[0.72rem] font-semibold tracking-[.1em] uppercase text-terra mb-3">
+      <p className="font-sans text-[0.72rem] font-semibold tracking-[.1em] uppercase text-terra">
         {role}
       </p>
-      {bio !== '[DA INSERIRE]' && (
-        <p className="font-lora text-sm text-ink-light leading-relaxed max-w-[200px]">{bio}</p>
-      )}
     </div>
   )
 }
@@ -235,7 +229,6 @@ function TeamSection() {
               <TeamCard
                 name={member.name}
                 role={`${member.role} · ${member.location}`}
-                bio={member.bio}
                 colorClass={avatarPalette[(team.length + i) % avatarPalette.length]}
               />
             </ScrollReveal>
@@ -263,20 +256,10 @@ function OrganiStatutari() {
                   Assemblea dei soci
                 </span>
                 <br />
-                Agnese e Davide Manenti · Bzunesh e Francesco Zana
+                Franco Zana · Bzunesh Kifle · Davide Manenti
               </p>
             </div>
 
-            <a
-              href="#"
-              aria-label="Scarica lo statuto dell'associazione (PDF)"
-              className="flex items-center gap-3 font-sans text-sm font-semibold tracking-[.08em] uppercase text-terra hover:text-terra-dark transition-colors shrink-0 group"
-            >
-              <span className="flex items-center justify-center w-10 h-10 rounded-sm border border-terra/30 group-hover:border-terra transition-colors">
-                <FileText className="h-4 w-4" />
-              </span>
-              Statuto (PDF) — DA INSERIRE
-            </a>
 
           </div>
         </ScrollReveal>
@@ -291,12 +274,12 @@ export default function ChiSiamo() {
   return (
     <>
       <Helmet>
-        <title>Chi siamo — Progetto Briciola Onlus</title>
+        <title>Chi siamo — Progetto Briciola ODV</title>
         <meta
           name="description"
-          content="La storia di Progetto Briciola Onlus: dal 1992 a Hured, Etiopia. Le origini del nome, il team e la filosofia dell'associazione."
+          content="La storia di Progetto Briciola ODV: dal 1992 a Hured, Etiopia. Le origini del nome, il team e la filosofia dell'associazione."
         />
-        <meta property="og:title" content="Chi siamo — Progetto Briciola Onlus" />
+        <meta property="og:title" content="Chi siamo — Progetto Briciola ODV" />
       </Helmet>
 
       <PageHero

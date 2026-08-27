@@ -7,6 +7,7 @@ interface PageHeroProps {
   title: string
   subtitle?: string
   align?: 'left' | 'center'
+  bg?: string
 }
 
 export function PageHero({
