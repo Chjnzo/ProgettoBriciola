@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Facebook, Instagram, Youtube, Heart, Lock } from 'lucide-react'
+import { Facebook, Instagram, Youtube, Heart } from 'lucide-react'
 import { orgInfo } from '@/data/content'
 
 const footerLinks = [
@@ -109,14 +109,6 @@ export function Footer() {
             <p className="flex items-center gap-1.5">
               Fatto con <Heart className="h-3 w-3 text-terra fill-terra" /> per Hured
             </p>
-            <Link
-              to="/admin/login"
-              aria-label="Area amministratori"
-              className="text-cream/20 hover:text-cream/50 transition-colors duration-300"
-              tabIndex={-1}
-            >
-              <Lock className="h-3 w-3" />
-            </Link>
           </div>
         </div>
       </div>
